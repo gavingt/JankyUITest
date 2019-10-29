@@ -13,19 +13,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        findViewById<Button>(R.id.button).setOnClickListener{
-            val intent = Intent(Intent.ACTION_DIAL)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
-            startActivity(intent)
-        }
         
         findViewById<Button>(R.id.button_open_alert_dialog).setOnClickListener{
             val dialogBuilder = AlertDialog.Builder(this)
 
-            dialogBuilder.setMessage("Do you want to close this application ?")
+            dialogBuilder.setMessage("Example AlertDialog")
                 .setPositiveButton("Proceed") {
-                        dialog, id -> finish()
+                        dialog, id ->
                 }
                 .setNegativeButton("Cancel") {
                         dialog, id -> dialog.cancel()
@@ -34,6 +28,13 @@ class MainActivity : AppCompatActivity() {
             alertDialog = dialogBuilder.create()
             alertDialog?.setTitle("AlertDialogExample")
             alertDialog?.show()
+        }
+
+
+        findViewById<Button>(R.id.button_intent).setOnClickListener{
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+            startActivity(intent)
         }
     }
 
